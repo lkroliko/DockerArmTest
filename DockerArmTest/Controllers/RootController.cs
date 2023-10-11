@@ -21,7 +21,7 @@ namespace DockerArmTest.Controllers
 
             var value = _configuration.GetValue<string>("TestOption");
 
-            return Results.Ok<string>($"TestOption: {value}");
+            return Results.Ok<string>($"TestOption: '{value};");
         }
     }
 }
