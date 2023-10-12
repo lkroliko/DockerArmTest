@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DockerArmTest.Controllers
@@ -19,9 +20,11 @@ namespace DockerArmTest.Controllers
         {
             _logger.LogInformation("Root get entered");
 
+            var version = Assembly.GetCallingAssembly().FullName.Split(',').First(x => x.StartsWith(" Version")).Trim();
+
             var value = _configuration.GetValue<string>("TestOption");
 
-            return Results.Ok<string>($"TestOption: '{value};");
+            return Results.Ok<string>($"TestOption: '{value}'. {version}");
         }
     }
 }
