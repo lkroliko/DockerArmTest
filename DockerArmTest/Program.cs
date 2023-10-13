@@ -1,5 +1,7 @@
+using Mcrio.Configuration.Provider.Docker.Secrets;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddEnvironmentVariables();
+builder.Configuration.AddEnvironmentVariables().AddDockerSecrets();
 // Add services to the container.
 
 builder.Services.AddControllers();
